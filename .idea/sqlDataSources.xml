@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="b413b402-d65f-4ff7-943e-05364944e014" />
+          <option name="name" value="DDL data source" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/src/main/resources/db/initDB.sql" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
