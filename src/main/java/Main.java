@@ -1,10 +1,3 @@
-import org.app.model.CarEntity;
-import org.app.utils.AppSessionFactory;
-import org.hibernate.Session;
-
-import java.util.List;
-import java.util.Objects;
-
 public class Main {
 
     public static void main(final String[] args) throws Exception {

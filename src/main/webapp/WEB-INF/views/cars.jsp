@@ -12,9 +12,9 @@
 
 <h2><a href="<c:url value='/' />">On main</a></h2>
 
-<%--<c:url value="${!empty carEntity.name ? '../../cars/add' : '/cars/add'}" var="carEdit" />--%>
+<c:url var="addAction" value="/cars/add" ></c:url>
 
-<form:form method="POST" action="cars/add" modelAttribute="carEntity">
+<form:form method="POST" action="${addAction}" modelAttribute="carEntity">
     <table>
         <tr>
             <c:if test="${!empty carEntity.name}">

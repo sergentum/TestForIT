@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 public class CarController {
 
@@ -19,7 +25,10 @@ public class CarController {
     @RequestMapping(value = "/cars")
     public String listCars(Model model) {
         model.addAttribute("carEntity", new CarEntity());
-        model.addAttribute("listCars", carService.getAll());
+        List<CarEntity> listCars = carService.getAll();
+        model.addAttribute("listCars", listCars.stream()
+                .sorted(Comparator.comparing(CarEntity::getId))
+                .collect(Collectors.toList()));
         return "cars";
     }
 
