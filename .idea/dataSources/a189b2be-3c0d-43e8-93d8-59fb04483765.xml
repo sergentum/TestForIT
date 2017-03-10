@@ -3,14 +3,14 @@
   <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
     <root id="1"/>
     <database id="2" parent="1" name="testit">
-      <ObjectId>17202</ObjectId>
+      <ObjectId>17029</ObjectId>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-03-10.09:10:42.191</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1061</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-03-10.22:49:59.721</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1209</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -30,36 +30,64 @@
       <ObjectId>12081</ObjectId>
     </schema>
     <sequence id="9" parent="3" name="global_seq">
-      <ObjectId>17209</ObjectId>
-      <StateNumber>1060</StateNumber>
+      <ObjectId>17388</ObjectId>
+      <StateNumber>1207</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
     <table id="10" parent="3" name="car">
-      <ObjectId>17211</ObjectId>
-      <StateNumber>1061</StateNumber>
+      <ObjectId>17390</ObjectId>
+      <StateNumber>1208</StateNumber>
     </table>
-    <column id="11" parent="10" name="id">
+    <table id="11" parent="3" name="part">
+      <ObjectId>17399</ObjectId>
+      <StateNumber>1209</StateNumber>
+    </table>
+    <column id="12" parent="10" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1061</StateNumber>
+      <StateNumber>1208</StateNumber>
       <DefaultExpression>nextval(&apos;global_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="12" parent="10" name="name">
+    <column id="13" parent="10" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1061</StateNumber>
+      <StateNumber>1208</StateNumber>
     </column>
-    <index id="13" parent="10" name="car_pkey">
-      <ObjectId>17218</ObjectId>
+    <index id="14" parent="10" name="car_pkey">
+      <ObjectId>17397</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="14" parent="10" name="car_pkey">
-      <ObjectId>17219</ObjectId>
+    <key id="15" parent="10" name="car_pkey">
+      <ObjectId>17398</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>car_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="16" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1209</StateNumber>
+      <DefaultExpression>nextval(&apos;global_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="17" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1209</StateNumber>
+    </column>
+    <index id="18" parent="11" name="part_pkey">
+      <ObjectId>17406</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="11" name="part_pkey">
+      <ObjectId>17407</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>part_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
   </database-model>

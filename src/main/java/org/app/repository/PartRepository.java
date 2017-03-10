@@ -1,7 +1,13 @@
 package org.app.repository;
 
-public interface PartRepository {//extends JpaRepository<Part, Long> {
+import org.app.model.PartEntity;
 
-//    @Query("SELECT p FROM Part p WHERE p.name = :name")
-//    Part findByName(@Param("name") String name);
+import java.util.List;
+
+public interface PartRepository {
+    void add(PartEntity part);
+    void update(PartEntity part);
+    List<PartEntity> getAll();
+    PartEntity getById(long id);
+    void remove(long id);
 }

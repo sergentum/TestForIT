@@ -1,6 +1,6 @@
 package org.app.repository;
 
-import org.app.model.CarEntity;
+import org.app.model.PartEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,44 +11,43 @@ import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
-public class CarRepositoryImpl implements CarRepository {
+public class PartRepositoryImpl implements PartRepository{
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     @Transactional
-    public void add(CarEntity car) {
-        entityManager.persist(car);
+    public void add(PartEntity part) {
+        entityManager.persist(part);
     }
 
     @Override
     @Transactional
-    public void update(CarEntity car) {
-        entityManager.merge(car);
+    public void update(PartEntity part) {
+        entityManager.merge(part);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<CarEntity> getAll() {
-        CriteriaQuery<CarEntity> criteria = entityManager.getCriteriaBuilder().createQuery(CarEntity.class);
-        criteria.select(criteria.from(CarEntity.class));
-//        criteria.where( builder.equal( root.get( Person_.name ), "John Doe" ) );
+    public List<PartEntity> getAll() {
+        CriteriaQuery<PartEntity> criteria = entityManager.getCriteriaBuilder().createQuery(PartEntity.class);
+        criteria.select(criteria.from(PartEntity.class));
 
         return entityManager.createQuery(criteria).getResultList();
     }
 
     @Override
-    public CarEntity getById(long id) {
-        return entityManager.find(CarEntity.class, id);
+    public PartEntity getById(long id) {
+        return entityManager.find(PartEntity.class, id);
     }
 
     @Override
     @Transactional
     public void remove(long id) {
-        CarEntity car = getById(id);
-        if(car != null) {
-            entityManager.remove(car);
+        PartEntity part = getById(id);
+        if(part != null) {
+            entityManager.remove(part);
         }
     }
 }

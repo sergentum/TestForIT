@@ -6,7 +6,8 @@
 </head>
 <body>
 <ul>
-    <li><a href="cars">Cars list</a></li>
+    <li><a href="<c:url value='/cars' />">Cars list</a></li>
+    <li><a href="<c:url value='/parts' />">Parts list</a></li>
 </ul>
 </body>
 </html>

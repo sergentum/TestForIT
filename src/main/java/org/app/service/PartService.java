@@ -1,14 +1,13 @@
 package org.app.service;
 
-import org.app.model.Car;
-import org.app.model.Part;
+import org.app.model.PartEntity;
 
 import java.util.List;
 
 public interface PartService {
-//    Part add(Part part);
-//    void delete(long id);
-//    Part getByName(String name);
-//    Part edit(Part part);
-//    List<Part> getAll();
+    void add(PartEntity part);
+    void update(PartEntity part);
+    List<PartEntity> getAll();
+    PartEntity getById(long id);
+    void remove(long id);
 }
