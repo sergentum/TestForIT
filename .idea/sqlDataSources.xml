@@ -6,6 +6,7 @@
         <State>
           <option name="id" value="b413b402-d65f-4ff7-943e-05364944e014" />
           <option name="name" value="DDL data source" />
+          <option name="parent" value="a189b2be-3c0d-43e8-93d8-59fb04483765" />
           <option name="urls">
             <array>
               <option value="file://$PROJECT_DIR$/src/main/resources/db/initDB.sql" />

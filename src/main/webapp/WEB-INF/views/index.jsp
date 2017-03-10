@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-    <c:forEach items="${list}" var="num">
-        <p>${num}</p>
-    </c:forEach>
+<ul>
+    <li><a href="cars">Cars list</a></li>
+</ul>
 </body>
 </html>

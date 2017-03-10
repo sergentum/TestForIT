@@ -5,19 +5,20 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CAR")
+@Table(name = "car")
 public class CarEntity {
 
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
     public CarEntity() {
     }
 
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -26,7 +27,7 @@ public class CarEntity {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
+
     public String getName() {
         return name;
     }
