@@ -1,58 +1,52 @@
 package org.app.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "car_part", schema = "public", catalog = "testit")
+@Entity
+@Table(name = "car_part")
 public class CarPartEntity {
-//    private int id;
-//    private CarEntity carByCarId;
-//    private PartEntity partByPartId;
-//
-//    @Id
-//    @Column(name = "id")
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        CarPartEntity that = (CarPartEntity) o;
-//
-//        if (id != that.id) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return id;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false)
-//    public CarEntity getCarByCarId() {
-//        return carByCarId;
-//    }
-//
-//    public void setCarByCarId(CarEntity carByCarId) {
-//        this.carByCarId = carByCarId;
-//    }
-//
-//    @ManyToOne
-//    @JoinColumn(name = "part_id", referencedColumnName = "id", nullable = false)
-//    public PartEntity getPartByPartId() {
-//        return partByPartId;
-//    }
-//
-//    public void setPartByPartId(PartEntity partByPartId) {
-//        this.partByPartId = partByPartId;
-//    }
+
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false)
+    private CarEntity car;
+
+    @ManyToOne
+    @JoinColumn(name = "part_id", referencedColumnName = "id", nullable = false)
+    private PartEntity part;
+
+    public CarPartEntity() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public CarEntity getCar() {
+        return car;
+    }
+
+    public void setCar(CarEntity car) {
+        this.car = car;
+    }
+
+
+    public PartEntity getPart() {
+        return part;
+    }
+
+    public void setPart(PartEntity part) {
+        this.part = part;
+    }
 }

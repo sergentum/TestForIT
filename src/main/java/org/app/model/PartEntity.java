@@ -3,6 +3,7 @@ package org.app.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Part")
@@ -15,6 +16,9 @@ public class PartEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "parts")
+    private Set<CarEntity> cars;
 
     public PartEntity() {
     }
@@ -34,5 +38,13 @@ public class PartEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<CarEntity> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<CarEntity> cars) {
+        this.cars = cars;
     }
 }

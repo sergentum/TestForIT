@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-03-10.22:49:59.721</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1209</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-03-11.13:30:49.572</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1262</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -29,63 +29,103 @@
     <schema id="8" parent="2" name="information_schema">
       <ObjectId>12081</ObjectId>
     </schema>
-    <sequence id="9" parent="3" name="global_seq">
-      <ObjectId>17388</ObjectId>
-      <StateNumber>1207</StateNumber>
+    <sequence id="9" parent="3" name="car_seq">
+      <ObjectId>17478</ObjectId>
+      <StateNumber>1258</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <table id="10" parent="3" name="car">
-      <ObjectId>17390</ObjectId>
-      <StateNumber>1208</StateNumber>
+    <sequence id="10" parent="3" name="global_seq">
+      <ObjectId>17444</ObjectId>
+      <StateNumber>1234</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="11" parent="3" name="part_seq">
+      <ObjectId>17480</ObjectId>
+      <StateNumber>1259</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="12" parent="3" name="car">
+      <ObjectId>17482</ObjectId>
+      <StateNumber>1262</StateNumber>
     </table>
-    <table id="11" parent="3" name="part">
-      <ObjectId>17399</ObjectId>
-      <StateNumber>1209</StateNumber>
+    <table id="13" parent="3" name="car_part">
+      <ObjectId>17500</ObjectId>
+      <StateNumber>1262</StateNumber>
     </table>
-    <column id="12" parent="10" name="id">
+    <table id="14" parent="3" name="part">
+      <ObjectId>17491</ObjectId>
+      <StateNumber>1262</StateNumber>
+    </table>
+    <column id="15" parent="12" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1208</StateNumber>
-      <DefaultExpression>nextval(&apos;global_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>1260</StateNumber>
+      <DefaultExpression>nextval(&apos;car_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="13" parent="10" name="name">
+    <column id="16" parent="12" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1208</StateNumber>
+      <StateNumber>1260</StateNumber>
     </column>
-    <index id="14" parent="10" name="car_pkey">
-      <ObjectId>17397</ObjectId>
+    <index id="17" parent="12" name="car_pkey">
+      <ObjectId>17489</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="15" parent="10" name="car_pkey">
-      <ObjectId>17398</ObjectId>
+    <key id="18" parent="12" name="car_pkey">
+      <ObjectId>17490</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>car_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="16" parent="11" name="id">
+    <column id="19" parent="13" name="car_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1209</StateNumber>
-      <DefaultExpression>nextval(&apos;global_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>1262</StateNumber>
     </column>
-    <column id="17" parent="11" name="name">
+    <column id="20" parent="13" name="part_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1262</StateNumber>
+    </column>
+    <foreign-key id="21" parent="13" name="car_part_car_id_fkey">
+      <ObjectId>17503</ObjectId>
+      <ColNames>car_id</ColNames>
+      <RefTableName>car</RefTableName>
+      <RefKeyName>car_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="22" parent="13" name="car_part_part_id_fkey">
+      <ObjectId>17508</ObjectId>
+      <ColNames>part_id</ColNames>
+      <RefTableName>part</RefTableName>
+      <RefKeyName>part_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="23" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1261</StateNumber>
+      <DefaultExpression>nextval(&apos;part_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="24" parent="14" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1209</StateNumber>
+      <StateNumber>1261</StateNumber>
     </column>
-    <index id="18" parent="11" name="part_pkey">
-      <ObjectId>17406</ObjectId>
+    <index id="25" parent="14" name="part_pkey">
+      <ObjectId>17498</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="19" parent="11" name="part_pkey">
-      <ObjectId>17407</ObjectId>
+    <key id="26" parent="14" name="part_pkey">
+      <ObjectId>17499</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>part_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
