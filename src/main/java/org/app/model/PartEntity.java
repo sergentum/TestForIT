@@ -31,7 +31,6 @@ public class PartEntity {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
