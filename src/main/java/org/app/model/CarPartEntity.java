@@ -9,44 +9,42 @@ import javax.persistence.*;
 public class CarPartEntity {
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
-    private int id;
+    @GeneratedValue(generator="car_part_seq")
+    @GenericGenerator(name="car_part_seq", strategy = "increment")
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false)
-    private CarEntity car;
+    private CarEntity carEntity;
 
     @ManyToOne
     @JoinColumn(name = "part_id", referencedColumnName = "id", nullable = false)
-    private PartEntity part;
+    private PartEntity partEntity;
 
     public CarPartEntity() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-
-    public CarEntity getCar() {
-        return car;
+    public CarEntity getCarEntity() {
+        return carEntity;
     }
 
-    public void setCar(CarEntity car) {
-        this.car = car;
+    public void setCarEntity(CarEntity carEntity) {
+        this.carEntity = carEntity;
     }
 
-
-    public PartEntity getPart() {
-        return part;
+    public PartEntity getPartEntity() {
+        return partEntity;
     }
 
-    public void setPart(PartEntity part) {
-        this.part = part;
+    public void setPartEntity(PartEntity partEntity) {
+        this.partEntity = partEntity;
     }
 }

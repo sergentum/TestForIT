@@ -32,11 +32,7 @@ public class CarController {
 
     @RequestMapping(value = "/cars/add", method = RequestMethod.POST)
     public String addCar(@ModelAttribute("carEntity") CarEntity car) {
-        if (car.getId() == null) {
-            carService.add(car);
-        } else {
-            carService.update(car);
-        }
+        carService.save(car);
         return "redirect:/cars";
     }
 

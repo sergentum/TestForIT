@@ -18,14 +18,13 @@ public class PartRepositoryImpl implements PartRepository{
 
     @Override
     @Transactional
-    public void add(PartEntity part) {
-        entityManager.persist(part);
-    }
-
-    @Override
-    @Transactional
-    public void update(PartEntity part) {
-        entityManager.merge(part);
+    public PartEntity save(PartEntity part) {
+        if(part.getId() != null){
+            return entityManager.merge(part);
+        }else {
+            entityManager.persist(part);
+            return part;
+        }
     }
 
     @SuppressWarnings("unchecked")

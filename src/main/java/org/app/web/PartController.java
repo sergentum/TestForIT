@@ -32,11 +32,7 @@ public class PartController {
 
     @RequestMapping(value = "/parts/add", method = RequestMethod.POST)
     public String addPart(@ModelAttribute("partEntity") PartEntity part) {
-        if (part.getId() == null) {
-            partService.add(part);
-        } else {
-            partService.update(part);
-        }
+        partService.save(part);
         return "redirect:/parts";
     }
 

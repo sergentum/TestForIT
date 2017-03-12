@@ -14,13 +14,8 @@ public class PartServiceImpl implements PartService{
     private PartRepository partRepository;
 
     @Override
-    public void add(PartEntity part) {
-        partRepository.add(part);
-    }
-
-    @Override
-    public void update(PartEntity part) {
-        partRepository.update(part);
+    public PartEntity save(PartEntity part) {
+        return partRepository.save(part);
     }
 
     @Override

@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <c:forEach items="${carparts}" var="meal">
-            <jsp:useBean id="carpart" scope="page" type="org.app.model.CarPart"/>
+            <jsp:useBean id="carpart" scope="page" type="org.app.model.CarPartEntity"/>
             <tr>
                 <td>${carpart.id}</td>
                 <td>${carpart.car.name}</td>

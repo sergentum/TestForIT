@@ -3,22 +3,22 @@ package org.app.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "Part")
 public class PartEntity {
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator="part_seq")
+    @GenericGenerator(name="part_seq", strategy = "increment")
     private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "parts")
-    private Set<CarEntity> cars;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "PartEntity")
+    private List<CarPartEntity> itemList;
 
     public PartEntity() {
     }
@@ -39,11 +39,11 @@ public class PartEntity {
         this.name = name;
     }
 
-    public Set<CarEntity> getCars() {
-        return cars;
+    public List<CarPartEntity> getItemList() {
+        return itemList;
     }
 
-    public void setCars(Set<CarEntity> cars) {
-        this.cars = cars;
+    public void setItemList(List<CarPartEntity> itemList) {
+        this.itemList = itemList;
     }
 }

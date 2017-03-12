@@ -1,10 +1,10 @@
-package org.app.repository;
+package org.app.service;
 
 import org.app.model.CarPartEntity;
 
 import java.util.List;
 
-public interface CarPartRepository {
+public interface CarPartService {
     CarPartEntity save(CarPartEntity item);
     List<CarPartEntity> getAll();
     CarPartEntity getById(long id);
