@@ -14,8 +14,8 @@ public class CarPartServiceImpl implements CarPartService {
     private CarPartRepository repository;
 
     @Override
-    public CarPartEntity save(CarPartEntity item) {
-        return repository.save(item);
+    public CarPartEntity save(CarPartEntity item, Long carId, Long partId) {
+        return repository.save(item, carId, partId);
     }
 
     @Override

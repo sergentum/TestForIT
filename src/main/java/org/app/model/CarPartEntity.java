@@ -9,16 +9,16 @@ import javax.persistence.*;
 public class CarPartEntity {
 
     @Id
-    @GeneratedValue(generator="car_part_seq")
-    @GenericGenerator(name="car_part_seq", strategy = "increment")
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false)
+//    @ManyToOne
+//    @JoinColumn(name = "car_id", nullable = false)
     private CarEntity carEntity;
 
-    @ManyToOne
-    @JoinColumn(name = "part_id", referencedColumnName = "id", nullable = false)
+//    @ManyToOne
+//    @JoinColumn(name = "part_id", nullable = false)
     private PartEntity partEntity;
 
     public CarPartEntity() {

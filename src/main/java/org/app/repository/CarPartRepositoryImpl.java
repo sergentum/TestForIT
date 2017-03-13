@@ -1,6 +1,8 @@
 package org.app.repository;
 
+import org.app.model.CarEntity;
 import org.app.model.CarPartEntity;
+import org.app.model.PartEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +20,15 @@ public class CarPartRepositoryImpl implements CarPartRepository {
 
     @Override
     @Transactional
-    public CarPartEntity save(CarPartEntity item) {
-        if(item.getId() != null){
+    public CarPartEntity save(CarPartEntity item, Long carId, Long partId) {
+        if (carId == null || partId == null) {
+            return null;
+        }
+        item.setCarEntity(entityManager.getReference(CarEntity.class, carId));
+        item.setPartEntity(entityManager.getReference(PartEntity.class, partId));
+        if (item.getId() != null) {
             return entityManager.merge(item);
-        }else {
+        } else {
             entityManager.persist(item);
             return item;
         }
@@ -33,7 +40,6 @@ public class CarPartRepositoryImpl implements CarPartRepository {
         CriteriaQuery<CarPartEntity> criteria = entityManager.getCriteriaBuilder().createQuery(CarPartEntity.class);
         criteria.select(criteria.from(CarPartEntity.class));
 //        criteria.where( builder.equal( root.get( Person_.name ), "John Doe" ) );
-
         return entityManager.createQuery(criteria).getResultList();
     }
 

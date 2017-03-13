@@ -10,15 +10,15 @@ import java.util.List;
 public class CarEntity {
 
     @Id
-    @GeneratedValue(generator="car_seq")
-    @GenericGenerator(name="car_seq", strategy = "increment")
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "CarEntity")
-    private List<CarPartEntity> itemList;
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "CarEntity")
+//    private List<CarPartEntity> itemList;
 
     public CarEntity() {
     }
@@ -40,11 +40,11 @@ public class CarEntity {
         this.name = name;
     }
 
-    public List<CarPartEntity> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<CarPartEntity> itemList) {
-        this.itemList = itemList;
-    }
+//    public List<CarPartEntity> getItemList() {
+//        return itemList;
+//    }
+//
+//    public void setItemList(List<CarPartEntity> itemList) {
+//        this.itemList = itemList;
+//    }
 }
