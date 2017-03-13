@@ -13,7 +13,38 @@
 </ul>
 
 <br>
-<%--<c:if test="${!empty listItem}">
+<c:url var="addAction" value="/add" ></c:url>
+
+<form:form method="POST" action="${addAction}" modelAttribute="item">
+    <table>
+        <tr>
+            <c:if test="${!empty item.id}">
+                <td>
+                    <form:label path="id">id</form:label>
+                </td>
+                <td>
+                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="id" />
+                </td>
+            </c:if>
+            <td>
+                <form:label path="name">Name</form:label>
+            </td>
+            <td>
+                <form:input path="name" />
+                <form:select path="car">
+                    <form:options items="${listCars}" />
+                </form:select>
+            </td>
+            <td colspan="2">
+                <input type="submit" value="${!empty carEntity.name ? 'Edit' : 'Add'}"/>
+            </td>
+        </tr>
+    </table>
+</form:form>
+
+<br>
+<c:if test="${!empty listItem}">
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
             <th width="80">ID</th>
@@ -33,6 +64,6 @@
             </tr>
         </c:forEach>
     </table>
-</c:if>--%>
+</c:if>
 </body>
 </html>
