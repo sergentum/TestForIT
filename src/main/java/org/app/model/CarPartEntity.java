@@ -13,12 +13,12 @@ public class CarPartEntity {
     @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "car_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "car_id", nullable = false)
     private CarEntity carEntity;
 
-//    @ManyToOne
-//    @JoinColumn(name = "part_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "part_id", nullable = false)
     private PartEntity partEntity;
 
     public CarPartEntity() {

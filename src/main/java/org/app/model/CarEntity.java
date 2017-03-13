@@ -17,8 +17,8 @@ public class CarEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "CarEntity")
-//    private List<CarPartEntity> itemList;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "carEntity")
+    private List<CarPartEntity> itemList;
 
     public CarEntity() {
     }
@@ -40,11 +40,11 @@ public class CarEntity {
         this.name = name;
     }
 
-//    public List<CarPartEntity> getItemList() {
-//        return itemList;
-//    }
-//
-//    public void setItemList(List<CarPartEntity> itemList) {
-//        this.itemList = itemList;
-//    }
+    public List<CarPartEntity> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<CarPartEntity> itemList) {
+        this.itemList = itemList;
+    }
 }
