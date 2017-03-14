@@ -7,37 +7,43 @@
     <title>Title</title>
 </head>
 <body>
+
+<h1>Main list</h1>
+
 <ul>
     <li><a href="<c:url value='/cars' />">Cars list</a></li>
     <li><a href="<c:url value='/parts' />">Parts list</a></li>
 </ul>
 
 <br>
-<c:url var="addAction" value="/add" ></c:url>
+<c:url var="addAction" value="/add"></c:url>
 
-<form:form method="POST" action="${addAction}" modelAttribute="item">
+<form:form method="POST" action="${addAction}" modelAttribute="itemTo">
     <table>
         <tr>
-            <c:if test="${!empty item.id}">
+            <c:if test="${!empty itemTo.id}">
                 <td>
                     <form:label path="id">id</form:label>
                 </td>
                 <td>
                     <form:input path="id" readonly="true" size="8" disabled="true"/>
-                    <form:hidden path="id" />
+                    <form:hidden path="id"/>
                 </td>
             </c:if>
             <td>
-                <form:label path="name">Name</form:label>
+                <form:label path="carId">Car</form:label>
             </td>
             <td>
-                <form:input path="name" />
-                <form:select path="car">
-                    <form:options items="${listCars}" />
-                </form:select>
+                <form:select path="carId" items="${mapCars}" />
+            </td>
+            <td>
+                <form:label path="partId">Part</form:label>
+            </td>
+            <td>
+                <form:select path="partId" items="${mapParts}" />
             </td>
             <td colspan="2">
-                <input type="submit" value="${!empty carEntity.name ? 'Edit' : 'Add'}"/>
+                <input type="submit" value="${!empty itemTo.id ? 'Edit' : 'Add'}"/>
             </td>
         </tr>
     </table>

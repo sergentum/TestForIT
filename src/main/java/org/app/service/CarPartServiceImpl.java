@@ -2,6 +2,7 @@ package org.app.service;
 
 import org.app.model.CarPartEntity;
 import org.app.repository.CarPartRepository;
+import org.app.to.CarPartTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,8 @@ public class CarPartServiceImpl implements CarPartService {
     private CarPartRepository repository;
 
     @Override
-    public CarPartEntity save(CarPartEntity item, Long carId, Long partId) {
-        return repository.save(item, carId, partId);
+    public CarPartEntity save(CarPartTo itemTo) {
+        return repository.save(itemTo);
     }
 
     @Override

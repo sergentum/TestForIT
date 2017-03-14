@@ -3,6 +3,7 @@ package org.app.repository;
 import org.app.model.CarEntity;
 import org.app.model.CarPartEntity;
 import org.app.model.PartEntity;
+import org.app.to.CarPartTo;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +21,14 @@ public class CarPartRepositoryImpl implements CarPartRepository {
 
     @Override
     @Transactional
-    public CarPartEntity save(CarPartEntity item, Long carId, Long partId) {
-        if (carId == null || partId == null) {
+    public CarPartEntity save(CarPartTo itemTo) {
+        if (itemTo.getCarId() == null || itemTo.getPartId() == null) {
             return null;
         }
-        item.setCarEntity(entityManager.getReference(CarEntity.class, carId));
-        item.setPartEntity(entityManager.getReference(PartEntity.class, partId));
+        CarPartEntity item = new CarPartEntity();
+        item.setId(itemTo.getId());
+        item.setCarEntity(entityManager.getReference(CarEntity.class, itemTo.getCarId()));
+        item.setPartEntity(entityManager.getReference(PartEntity.class, itemTo.getPartId()));
         if (item.getId() != null) {
             return entityManager.merge(item);
         } else {

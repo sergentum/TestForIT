@@ -6,7 +6,7 @@ import org.app.model.PartEntity;
 import org.app.service.CarPartService;
 import org.app.service.CarService;
 import org.app.service.PartService;
-import org.app.util.AdvancedUtil;
+import org.app.to.CarPartTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 @Controller
 public class RootController {
@@ -31,18 +32,24 @@ public class RootController {
 
     @RequestMapping(value = "/")
     public String test(Model model){
-        model.addAttribute("item", new CarPartEntity());
-        model.addAttribute("listItem", AdvancedUtil.sortList(service.getAll(), Comparator.comparing(CarPartEntity::getId)));
-        model.addAttribute("listCars", AdvancedUtil.sortList(carService.getAll(), Comparator.comparing(CarEntity::getId)));
-        model.addAttribute("listParts", AdvancedUtil.sortList(partService.getAll(), Comparator.comparing(PartEntity::getId)));
+        model.addAttribute("itemTo", new CarPartTo());
+
+        model.addAttribute("mapCars", carService.getAll().stream()
+                .sorted(Comparator.comparing(CarEntity::getId))
+                .collect(Collectors.toMap(CarEntity::getId, CarEntity::getName)));
+        model.addAttribute("mapParts", partService.getAll().stream()
+                .sorted(Comparator.comparing(PartEntity::getId))
+                .collect(Collectors.toMap(PartEntity::getId, PartEntity::getName)));
+
+        model.addAttribute("listItem", service.getAll().stream()
+                .sorted(Comparator.comparing(CarPartEntity::getId))
+                .collect(Collectors.toList()));
         return "index";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addCar(@ModelAttribute("item") CarPartEntity item,
-                         @ModelAttribute("carId") long carId,
-                         @ModelAttribute("partId") long partId) {
-        service.save(item, carId, partId);
+    public String addCar(@ModelAttribute("itemTo") CarPartTo item) {
+        service.save(item);
         return "redirect:/";
     }
 
@@ -54,8 +61,24 @@ public class RootController {
 
     @RequestMapping("/edit/{id}")
     public String editCar(@PathVariable("id") long id, Model model) {
-        model.addAttribute("item", service.getById(id));
-        model.addAttribute("listItem", service.getAll());
+        CarPartEntity item = service.getById(id);
+
+        CarPartTo itemTo = new CarPartTo();
+        itemTo.setId(item.getId());
+        itemTo.setCarId(item.getCarEntity().getId());
+        itemTo.setPartId(item.getPartEntity().getId());
+        model.addAttribute("itemTo", itemTo);
+
+        model.addAttribute("mapCars", carService.getAll().stream()
+                .sorted(Comparator.comparing(CarEntity::getId))
+                .collect(Collectors.toMap(CarEntity::getId, CarEntity::getName)));
+        model.addAttribute("mapParts", partService.getAll().stream()
+                .sorted(Comparator.comparing(PartEntity::getId))
+                .collect(Collectors.toMap(PartEntity::getId, PartEntity::getName)));
+
+        model.addAttribute("listItem", service.getAll().stream()
+                .sorted(Comparator.comparing(CarPartEntity::getId))
+                .collect(Collectors.toList()));
         return "index";
     }
 }
