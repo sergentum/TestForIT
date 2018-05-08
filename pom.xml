@@ -21,6 +21,7 @@
         <postgresql.version>9.4.1212</postgresql.version>
 
         <spring.version>4.3.6.RELEASE</spring.version>
+        <spring-data-jpa.version>2.0.5.RELEASE</spring-data-jpa.version>
 
         <junit.version>4.12</junit.version>
 
@@ -64,9 +65,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
