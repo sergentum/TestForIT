@@ -10,6 +10,10 @@
 
     <context:component-scan base-package="org.app.**.repository" />
 
+
+    <!--comment line below to see that it works without AccountRepository-->
+    <context:component-scan base-package="**.repository" />
+
     <context:component-scan base-package="org.app.**.service" />
 
     <tx:annotation-driven transaction-manager="transactionManager" />
@@ -28,7 +32,8 @@
     </bean>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-          p:packagesToScan="org.app.**.model" p:dataSource-ref="dataSource">
+          p:packagesToScan="**"
+          p:dataSource-ref="dataSource">
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
