@@ -11,6 +11,7 @@
     <mvc:annotation-driven />
 
     <context:component-scan base-package="org.app.**.web" />
+    <!--<context:component-scan base-package="**.controllers" />-->
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
